@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Noor Al-Bayan Quiz</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#667085;--primary:#2563eb;--ok:#15803d;--bad:#b42318;--border:#d0d5dd}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Tahoma,sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:720px;margin:auto;padding:18px}.head{text-align:center;margin:12px 0 20px}.head h1{margin:0 0 8px;font-size:26px}.head p{margin:0;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 4px 18px rgba(0,0,0,.05)}
+.meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:14px;margin-bottom:12px}
+.bar{height:8px;background:#e5e7eb;border-radius:99px;overflow:hidden;margin-bottom:20px}.bar span{display:block;height:100%;background:var(--primary);transition:.25s}
+.part{font-size:14px;font-weight:700;color:var(--primary);margin-bottom:8px}.q{font-size:20px;line-height:1.55;margin:0 0 18px}
+.option{display:flex;gap:12px;align-items:center;border:1px solid var(--border);border-radius:12px;padding:13px;margin:10px 0;cursor:pointer;min-height:50px}
+.option:hover{background:#f8fafc}.option input{width:20px;height:20px}.feedback{display:none;margin-top:16px;padding:12px;border-radius:10px;font-weight:700}
+.good{display:block;background:#ecfdf3;color:var(--ok);border:1px solid #abefc6}.bad{display:block;background:#fef3f2;color:var(--bad);border:1px solid #fecdca}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}button{border:0;border-radius:10px;padding:12px 18px;font-size:16px;font-weight:700;cursor:pointer}
+.primary{background:var(--primary);color:white}.secondary{background:#eef2f6;color:var(--text)}button:disabled{opacity:.5;cursor:not-allowed}
+.result{text-align:center}.result .big{font-size:42px;font-weight:800;margin:14px}.arabic{direction:rtl}
+.small{font-size:13px;color:var(--muted);text-align:center;margin-top:15px}
+@media(max-width:480px){.wrap{padding:12px}.card{padding:16px}.q{font-size:18px}.actions button{width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <h1>Noor Al-Bayan Interactive Quiz</h1>
+    <p>اختبار نور البيان التفاعلي</p>
+  </div>
+  <div id="quiz" class="card">
+    <div class="meta"><span id="counter"></span><span id="score">Score: 0 / 8</span></div>
+    <div class="bar"><span id="progress"></span></div>
+    <div id="part" class="part"></div>
+    <h2 id="question" class="q"></h2>
+    <div id="options"></div>
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+    <div class="actions">
+      <button id="check" class="primary">Check Answer</button>
+      <button id="next" class="secondary" style="display:none">Next Question →</button>
+    </div>
+  </div>
+  <div id="result" class="card result" style="display:none">
+    <h2>Quiz Completed</h2>
+    <div class="arabic">تم الانتهاء من الاختبار</div>
+    <div id="finalScore" class="big"></div>
+    <p id="message"></p>
+    <button id="restart" class="primary">Restart Quiz</button>
+  </div>
+  <div class="small">Choose one answer, then press “Check Answer”.</div>
+</div>
+<script>
+const questions=[
+{part:"Part 1: Letter Recognition & Sounds",q:"What is the sound of the letter (بَ) with Fatha?",o:["Ba","Bu","Bi"],a:0,ex:"بَ is read “Ba”. Fatha gives the short “a” sound."},
+{part:"Part 1: Letter Recognition & Sounds",q:"Identify the letter with Kasra (تِ):",o:["Ta","Ti","Tu"],a:1,ex:"تِ is read “Ti”. Kasra gives the short “i” sound."},
+{part:"Part 2: Short Vowels / Harakaat",q:"كَ - تَ - بَ → How do you read this connected word?",o:["Kataba","Kutiba","Katibu"],a:0,ex:"كَتَبَ is read “Kataba”."},
+{part:"Part 2: Short Vowels / Harakaat",q:"ذَهَبَ → Separate the letters of this word:",o:["ذ - ه - ب","د - ه - ب","ذ - ح - ب"],a:0,ex:"ذَهَبَ consists of ذ - ه - ب."},
+{part:"Part 3: Long Vowels / Madd",q:"In the word قَالَ, what kind of Madd is present?",o:["Madd bi al-Alif (مد بالألف)","Madd bi al-Waw (مد بالواو)","Madd bi al-Ya (مد بالياء)"],a:0,ex:"قَالَ contains Madd bi al-Alif (مد بالألف)."},
+{part:"Part 3: Long Vowels / Madd",q:"In the word فِيلٌ, what is the elongated letter?",o:["Alif","Waw","Ya"],a:2,ex:"The elongated letter is Ya (ياء المد)."},
+{part:"Part 4: Sukun & Tanween",q:"How does a letter with Sukun sound?",o:["It has a short vowel sound (Fatha/Kasra/Damma).","It is pronounced without a vowel sound and joins to the preceding sound.","It is repeated twice."],a:1,ex:"A letter with Sukun has no vowel (Harakah) of its own."},
+{part:"Part 4: Sukun & Tanween",q:"Choose the word that ends with Tanween bil-Fath (تنوين بالفتح):",o:["كِتَابٌ","كِتَاباً","كِتَابٍ"],a:1,ex:"كِتَاباً ends with Tanween bil-Fath."}
+];
+let i=0,points=0,locked=false;
+const $=id=>document.getElementById(id);
+function render(){
+ locked=false; const x=questions[i];
+ $("counter").textContent=`Question ${i+1} of ${questions.length}`;
+ $("score").textContent=`Score: ${points} / ${questions.length}`;
+ $("progress").style.width=`${(i+1)/questions.length*100}%`;
+ $("part").textContent=x.part; $("question").textContent=x.q;
+ $("options").innerHTML=x.o.map((v,j)=>`<label class="option"><input type="radio" name="ans" value="${j}"><span>${String.fromCharCode(97+j)}) ${v}</span></label>`).join("");
+ $("feedback").className="feedback"; $("feedback").textContent="";
+ $("check").style.display="inline-block"; $("next").style.display="none";
+}
+$("check").onclick=()=>{
+ if(locked)return;
+ const s=document.querySelector('input[name="ans"]:checked');
+ if(!s){$("feedback").className="feedback bad";$("feedback").textContent="Please choose an answer first.";return}
+ locked=true; document.querySelectorAll('input[name="ans"]').forEach(x=>x.disabled=true);
+ const correct=Number(s.value)===questions[i].a;
+ if(correct)points++;
+ $("feedback").className="feedback "+(correct?"good":"bad");
+ $("feedback").textContent=(correct?"✓ Correct! ":"✗ Incorrect. ")+questions[i].ex;
+ $("score").textContent=`Score: ${points} / ${questions.length}`;
+ $("check").style.display="none"; $("next").style.display="inline-block";
+ $("next").textContent=i===questions.length-1?"Show Final Result":"Next Question →";
+};
+$("next").onclick=()=>{
+ if(i<questions.length-1){i++;render()}else{
+  $("quiz").style.display="none";$("result").style.display="block";
+  const pct=Math.round(points/questions.length*100);
+  $("finalScore").textContent=`${points} / ${questions.length} — ${pct}%`;
+  $("message").textContent=pct===100?"Excellent! All answers are correct.":pct>=75?"Very good! Strong understanding.":pct>=50?"Good start. Review the incorrect answers and try again.":"Review the lessons and try the quiz again.";
+ }
+};
+$("restart").onclick=()=>{i=0;points=0;$("result").style.display="none";$("quiz").style.display="block";render()};
+render();
+</script>
+</body>
+</html>
