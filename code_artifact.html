@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>اختبار استشاري ضبط جودة التنفيذ | نقابة المهندسين المصرية</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .touch-action-manipulation {
+            touch-action: manipulation;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-blue-200">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black text-base shadow-sm">
+                    QC
+                </div>
+                <div>
+                    <h1 class="text-sm sm:text-base font-bold leading-tight text-white">استشاري ضبط جودة التنفيذ</h1>
+                    <p class="text-[11px] text-slate-400">لجان نقابة المهندسين المصرية • ECP</p>
+                </div>
+            </div>
+            <div id="counter-pill" class="bg-slate-800 border border-slate-700 text-blue-400 text-xs font-bold px-3 py-1 rounded-full">
+                <span id="header-curr">1</span> / <span id="header-total">25</span>
+            </div>
+        </div>
+        <!-- Continuous Progress Track -->
+        <div class="w-full bg-slate-800 h-1.5 overflow-hidden">
+            <div id="progress-indicator" class="h-full bg-blue-500 transition-all duration-300 ease-out" style="width: 4%;"></div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-2xl mx-auto w-full px-3.5 sm:px-4 py-5 flex-grow flex flex-col justify-center">
+
+        <!-- 1. WELCOME SCREEN -->
+        <section id="welcome-view" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 text-center my-auto animate-fade-in">
+            <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-2">الاختبار التأهيلي للمقابلة الاستشارية</h2>
+            <p class="text-slate-600 text-xs sm:text-sm mb-6 leading-relaxed">
+                اختبار تفاعلي يحاكي أسئلة لجان المقابلات بنقابة المهندسين في مجال <strong class="text-blue-700">ضبط جودة التنفيذ</strong>. يغطي الكود المصري لتصميم وتنفيذ المنشآت الخرسانية (ECP 203)، خطط الـ ITP، وضبط جودة الخرسانة والتربة والأساسات وحديد التسليح والعزل وإجراءات الموقع.
+            </p>
+
+            <div class="grid grid-cols-3 gap-2.5 text-center text-xs mb-6">
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                    <span class="block text-slate-900 font-extrabold text-sm sm:text-base">25</span>
+                    <span class="text-slate-500 text-[11px]">سؤالاً تخصصياً</span>
+                </div>
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                    <span class="block text-slate-900 font-extrabold text-sm sm:text-base">فوري</span>
+                    <span class="text-slate-500 text-[11px]">تعليل كود ECP</span>
+                </div>
+                <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                    <span class="block text-slate-900 font-extrabold text-sm sm:text-base">70%</span>
+                    <span class="text-slate-500 text-[11px]">نسبة الاجتياز</span>
+                </div>
+            </div>
+
+            <button onclick="startQuiz()" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold rounded-xl shadow-md text-sm transition touch-action-manipulation">
+                ابدأ الاختبار الآن 🚀
+            </button>
+        </section>
+
+        <!-- 2. QUIZ QUESTION VIEW -->
+        <section id="quiz-view" class="hidden flex-col flex-grow">
+            <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200 flex-grow flex flex-col justify-between animate-fade-in">
+                
+                <div>
+                    <!-- Meta info & Category badge -->
+                    <div class="flex items-center justify-between mb-3 text-xs">
+                        <span id="topic-badge" class="px-2.5 py-0.5 rounded-md font-bold bg-blue-50 text-blue-700 border border-blue-200">
+                            موضوع السؤال
+                        </span>
+                        <span id="step-txt" class="font-bold text-slate-400">سؤال 1 من 25</span>
+                    </div>
+
+                    <!-- Question Text -->
+                    <h3 id="question-text" class="text-base sm:text-lg font-bold text-slate-900 leading-snug mb-5">
+                        نص السؤال يظهر هنا...
+                    </h3>
+
+                    <!-- Choice Options Container -->
+                    <div id="options-wrapper" class="space-y-2.5 mb-4">
+                        <!-- Options generated dynamically -->
+                    </div>
+
+                    <!-- Explanatory Feedback Box (Hidden initially) -->
+                    <div id="feedback-panel" class="hidden p-3.5 rounded-xl border text-xs sm:text-sm animate-fade-in mb-4">
+                        <div class="flex items-start gap-2">
+                            <span id="feedback-badge" class="text-base mt-0.5">💡</span>
+                            <div>
+                                <h4 id="feedback-title" class="font-bold mb-1">التعليل الهندسي والمطابقة للكود:</h4>
+                                <p id="feedback-desc" class="text-slate-700 leading-relaxed text-xs sm:text-[13px]"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Action Buttons -->
+                <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+                    <button id="prev-btn" onclick="goToPrevQuestion()" class="px-4 py-2 text-xs sm:text-sm font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg disabled:opacity-30 disabled:cursor-not-allowed transition">
+                        السابق
+                    </button>
+                    <div class="flex items-center gap-2">
+                        <button id="next-btn" onclick="goToNextQuestion()" class="px-5 py-2.5 text-xs sm:text-sm font-bold bg-blue-600 hover:bg-blue-700 active:scale-95 text-white rounded-lg shadow-sm transition">
+                            التالي
+                        </button>
+                        <button id="finish-btn" onclick="calculateAndShowResults()" class="hidden px-5 py-2.5 text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white rounded-lg shadow-sm transition">
+                            عرض النتيجة النهائية 📊
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. SCORE & REVIEW SCREEN -->
+        <section id="results-view" class="hidden bg-white rounded-2xl p-5 sm:p-7 shadow-sm border border-slate-200 text-center my-auto animate-fade-in">
+            <div id="result-icon-box" class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+                🏆
+            </div>
+            
+            <h2 id="result-status" class="text-lg sm:text-xl font-extrabold text-slate-900 mb-1">نتيجة التقييم</h2>
+            <p id="result-detail" class="text-xs text-slate-500 mb-5">ملخص أدائك في اختبار استشاري ضبط جودة التنفيذ</p>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 max-w-xs mx-auto mb-5 shadow-inner">
+                <div id="percentage-score" class="text-4xl font-black text-blue-600 mb-1">0%</div>
+                <p class="text-xs font-semibold text-slate-600">
+                    حققت <span id="num-correct" class="text-slate-900 font-bold">0</span> من إجمالي <span class="text-slate-900 font-bold">25</span> سؤالاً
+                </p>
+                <div id="performance-badge" class="mt-2.5 inline-block text-xs font-bold px-3 py-1 rounded-full border">
+                    التقييم
+                </div>
+            </div>
+
+            <!-- Detailed Missed/Correct Breakdown -->
+            <div class="text-right mb-5">
+                <h3 class="font-bold text-slate-800 text-xs sm:text-sm mb-2 flex items-center justify-between">
+                    <span>مراجعة الأسئلة وتصحيح الكود:</span>
+                    <span class="text-[11px] font-normal text-slate-500">مراجعة شاملة لجميع الإجابات</span>
+                </h3>
+                <div id="review-list" class="space-y-2.5 max-h-72 overflow-y-auto text-xs p-1">
+                    <!-- Dynamic review questions list -->
+                </div>
+            </div>
+
+            <button onclick="startQuiz()" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-xs sm:text-sm shadow-md transition touch-action-manipulation">
+                إعادة الاختبار من البداية 🔄
+            </button>
+        </section>
+
+    </main>
+
+    <!-- Page Footer -->
+    <footer class="bg-white border-t border-slate-200 py-3 text-center text-[11px] text-slate-500">
+        جاهز للعمل المباشر على الهاتف والحاسوب • كود البناء والمواصفات القياسية المصرية
+    </footer>
+
+    <!-- Quiz Engine & Questions Database -->
+    <script>
+        const quizBank = [
+            {
+                topic: "خطة الفحص والاختبار (ITP)",
+                q: "ما هو الفارق الجوهري في خطة الفحص والاختبار (ITP) بين نقطة التوقف (Hold Point) ونقطة الشهود (Witness Point)؟",
+                options: [
+                    "Hold Point تتطلب موافقة وتوقيعاً كتابياً من الاستشاري قبل المتابعة، بينما Witness Point يمكن متابعة العمل فيها إذا أُخطر الاستشاري ولم يحضر في الموعد المكتوب.",
+                    "Hold Point تتعلق بأعمال الصب فقط، بينما Witness Point تتعلق بأعمال العزل والتشطيبات.",
+                    "Hold Point يلزم لها حضور المالك، بينما Witness Point يكتفى فيها بمهندس المقاول فقط.",
+                    "كلاهما متطابقان شكلياً، ولهما نفس المسؤولية القانونية دون أي اختلاف."
+                ],
+                correct: 0,
+                explanation: "نقطة التوقف (Hold Point) هي نقطة حرجة يُحظر تجاوزها دون فحص واعتماد كتابي من الاستشاري (مثل تسليم حديد السقف قبل الصب). أما نقطة الشهود (Witness Point) فيكفي فيها إخطار الاستشاري بموعدها، وفي حال عدم حضوره يجوز استئناف العمل."
+            },
+            {
+                topic: "الكود المصري (ECP 203) - الخرسانة",
+                q: "طبقاً للكود المصري، متى تُعتبر نتائج تكسير مكعبات الخرسانة لعمر 28 يوماً مقبولة للمجموعة الخرسانية الواحدة؟",
+                options: [
+                    "إذا كان متوسط النتائج لا يقل عن رتبة الخرسانة المطلوبة (fcu)، ولا تقل مقاومة أي مكعب مفرد عن 0.85 من (fcu).",
+                    "إذا كان متوسط النتائج لا يقل عن 1.2 من رتبة الخرسانة، وأقل مكعب يساوي fcu تماماً.",
+                    "إذا حقق مكعب واحد على الأقل قيمة أعلى من رتبة الخرسانة المميزة.",
+                    "إذا كان متوسط النتائج لا يقل عن 70% من رتبة الخرسانة التصميمية."
+                ],
+                correct: 0,
+                explanation: "يشترط الكود المصري للمنشآت الخرسانية أن يكون متوسط مقاومة الضغط لعينات المجموعة عند 28 يوماً مساوياً أو أكبر من المقاومة المميزة المطلوبة (fcu)، وألا تقل نتيجة أي مكعب منفصل داخل المجموعة عن 85% من (fcu)."
+            },
+            {
+                topic: "اختبار القلب الخرساني (Core Test)",
+                q: "في حال الشك في جودة الخرسانة واللجوء لاختبار القلب الخرساني (Core Test)، ما هو معيار الكود المصري لقبول الخرسانة إنشائياً؟",
+                options: [
+                    "متوسط مقاومة القلوب المختبرة (3 على الأقل) لا يقل عن 75% من fcu، وأدنى قلب منفرد لا يقل عن 65% من fcu.",
+                    "متوسط القلوب لا يقل عن 100% من المقاومة التصميمية المطلوبة.",
+                    "متوسط القلوب لا يقل عن 85%، ولا يقل أي قلب عن 80% من fcu.",
+                    "أن تعطي القلوب نتيجة مساوية تماماً لاختبار مطرقة شميدت."
+                ],
+                correct: 0,
+                explanation: "طبقاً للكود المصري (ECP 203 الباب الثامن)، يعتبر الجزء المصبوب من المنشأ مقبولاً إذا كان متوسط مقاومة 3 قلوب على الأقل لا يقل عن 75% من المقاومة المميزة المطلوبة fcu، ولا تقل مقاومة أي قلب بمفرده عن 65% منها."
+            },
+            {
+                topic: "اختبار مطرقة شميدت (Rebound Hammer)",
+                q: "ما هو الاستخدام الهندسي الصحيح لمطرقة شميدت في أعمال ضبط الجودة الموقعية؟",
+                options: [
+                    "تُعتبر أداة استرشادية غير متلفة لفحص تجانس الخرسانة وتحديد المناطق الأضعف، ولا تُعد بديلاً رسمياً لرفض الخرسانة دون اختبار Core Test.",
+                    "تُعد اختباراً قاطعاً ومعتمداً كبديل لتكسير المكعبات ويتم الرفض والقبول المالي بناءً عليها مباشرة.",
+                    "تُستخدم لقياس عمق الشروخ الإنشائية في الأعمدة بعد فك الشدات.",
+                    "تُستخدم لتحديد إجهاد خضوع حديد التسليح داخل الخرسانة المتصلدة."
+                ],
+                correct: 0,
+                explanation: "مطرقة شميدت تقيس صلادة السطح فقط وتتأثر بعوامل متعددة (كالرطوبة والكربنة ونوع الركام)، وتستخدم للمقارنة وتحديد مدى تجانس الخرسانة والمواضع الضعيفة، ولا يُعتمد عليها كبديل لاختبارات التحقق المعتمدة كالقلب الخرساني."
+            },
+            {
+                topic: "فحص الخوازيق (PIT)",
+                q: "ما هو الغرض الأساسي من إجراء اختبار تكامل الخازوق (Pile Integrity Test - PIT)؟",
+                options: [
+                    "فحص استمرارية جذع الخازوق الخرساني واكتشاف أي اختناقات (Neck) أو تجاويف أو شوائب ترابية عبر الموجات الصوتية.",
+                    "قياس أقصى قدرة تحمل احتكاكية للخازوق تحت الأحمال الرأسية.",
+                    "تحديد إجهاد الشد في حديد تسليح القفص المعدني للخازوق.",
+                    "قياس الهبوط النهائي للخازوق بعد 28 يوماً من الصب."
+                ],
+                correct: 0,
+                explanation: "اختبار الـ PIT هو فحص غير متلف منخفض الانفعال (Low-strain) يرسل موجة صوتية عبر رأس الخازوق ويسجل ارتدادها لتحديد طول الخازوق الفعلي والتأكد من استمرارية مقطعه وسلامته من الاختناقات أو التكهفات."
+            },
+            {
+                topic: "اختبار تحميل الخوازيق (Load Test)",
+                q: "في تجربة التحميل الاستاتيكية للخوازيق التجريبية التأكيدية (Preliminary/Design Test Piles)، كم يبلغ حمل الاختبار الأقصى طبقاً للكود المصري؟",
+                options: [
+                    "من 200% إلى 250% من الحمل التشغيلي التصميمي (أو حتى الوصول للانهيار).",
+                    "150% من الحمل التشغيلي فقط في جميع الأحوال.",
+                    "100% من الحمل التشغيلي المحدد في المخططات.",
+                    "50% فقط لضمان عدم حدوث شروخ بالخازوق."
+                ],
+                correct: 0,
+                explanation: "الخوازيق التأكيدية أو الاسترشادية التي تُنفذ قبل بدء الأعمال يتم تحميلها حتى 200% إلى 250% من الحمل التشغيلي للتحقق من معامل الأمان الحقيقي للتربة، بينما الخوازيق العاملة بالمشروع (Working Piles) تُحمل عادة حتى 150%."
+            },
+            {
+                topic: "اختبارات التربة والردم",
+                q: "في اختبار مخروط الرمل (Sand Cone Test) للطبقات الحاملة وطبقات الإحلال، ما هي نسبة الدمك الموقعية الشائعة المطلوبة؟",
+                options: [
+                    "لا تقل عن 95% من أقصى كثافة جافة معملية (MDD) محددة باختبار بروكتور المعدل.",
+                    "لا تقل عن 70% من الكثافة الحجمية للرمل الجاف.",
+                    "لا تقل عن 125% من الكثافة القياسية المائية.",
+                    "بين 80% و 85% كحد أقصى مسموح به."
+                ],
+                correct: 0,
+                explanation: "تنص مواصفات الطرق وأعمال التأسيس على ألا تقل الكثافة الحقلية لطبقات الردم الحاملة والإحلال عن 95% من الكثافة الجافة العظمى المحسوبة في المعمل وفق اختبار بروكتور المعدل (Modified Proctor)."
+            },
+            {
+                topic: "اختبارات التربة (Proctor)",
+                q: "ما هو المحتوى المائي الأمثل (Optimum Moisture Content - OMC) الناتج من تجربة بروكتور؟",
+                options: [
+                    "نسبة الرطوبة التي يتحقق عندها أقصى كثافة جافة للتربة عند بذل طاقة دمك محددة.",
+                    "نسبة المياه المطلوبة لتحويل التربة إلى قوام لزج بالكامل.",
+                    "نسبة رطوبة التربة الطبيعية قبل البدء في أعمال الحفر.",
+                    "محتوى الماء بعد تشبع التربة لمدة 72 ساعة."
+                ],
+                correct: 0,
+                explanation: "المحتوى المائي الأمثل (OMC) هو نسبة الرطوبة التي تجعل جزيئات التربة تنزلق فوق بعضها لتشغل أقل حجم فراغات ممكن، محققة أعلى كثافة جافة ممكنة (Maximum Dry Density) عند طاقة دمج معيارية."
+            },
+            {
+                topic: "العزل المائي (Waterproofing)",
+                q: "ما هو الإجراء القياسي لاختبار العزل المائي لأسطح الحمامات أو الخزانات الأرضية للتأكد من خلوها من التسريب؟",
+                options: [
+                    "الغمر بالمياه النظيفة لمدة 48 إلى 72 ساعة ومراقبة المناسيب وفحص الأسقف السفلية والواجهات لعدم وجود أي ترشيح.",
+                    "رش السطح بالخرطوم لمدة 10 دقائق فقط وتسليم الاستشاري مباشرة.",
+                    "دهان طبقة البيتومين والردم فوقها فوراً دون اختبار لتوفير وقت المشروع.",
+                    "تسليط هواء مضغوط على لفائف الممبرين لاختبار اللحامات فقط."
+                ],
+                correct: 0,
+                explanation: "اختبار الغمر بالماء (Flood Test) يستمر عادة من 48 إلى 72 ساعة بوضع علامة للمنسوب مع الأخذ في الاعتبار معدل البخر الطبيعي، مع التفتيش الدقيق على بطنيات الأسقف والجدران الخارجية للتأكد التام من سلامة اللحامات."
+            },
+            {
+                topic: "فك الشدات (Formwork Striking)",
+                q: "طبقاً للكود المصري، ما هي مدة بقاء الشدات السفلية للكمرات والأسقف العادية ذات البحر (L) في الطقس العادي؟",
+                options: [
+                    "ضعف البحر بالأمتار + يومين (2L + 2)، بشرط ألا تقل المدة عن 7 أيام.",
+                    "نصف البحر بالأمتار + 5 أيام.",
+                    "28 يوماً لجميع العناصر الإنشائية دون النظر للبحر.",
+                    "يوم واحد لكل متر طولي من البحر."
+                ],
+                correct: 0,
+                explanation: "تنص اشتراطات الكود المصري على أن مدة فك شدات الأسقف والكمرات تحسب بالمعادلة: (2L + 2) يوم، على ألا تقل بأي حال عن أسبوع، وفي الكوابيل (Cantilevers) تكون: (4L + 2) يوم وبما لا يقل عن أسبوع."
+            },
+            {
+                topic: "فك الشدات الرأسية",
+                q: "ما هي المدة المسموحة لفك الشدات الرأسية غير الحاملة للأوزان (كجوانب الأعمدة والحوائط وجوانب الكمرات) في الطقس العادي؟",
+                options: [
+                    "بعد 24 إلى 48 ساعة من الصب بشرط تصلب الخرسانة وعدم تعرض الحواف للتلف.",
+                    "بعد 14 يوماً إلزامياً لجميع العناصر الرأسية.",
+                    "بعد 4 ساعات فقط من انتهاء الصب.",
+                    "بعد أسبوع كامل من المعالجة المستمرة بالماء."
+                ],
+                correct: 0,
+                explanation: "تُفك الشدات الرأسية للجوانب والأعمدة والحوائط بعد مدة تتراوح بين 24 إلى 48 ساعة طبقاً لدرجة حرارة الجو ونوع الأسمنت، شريطة أن تكون الخرسانة قد اكتسبت صلابة كافية تمنع انهيار الحواف أو التلف السطحي."
+            },
+            {
+                topic: "تقارير عدم المطابقة (NCR)",
+                q: "متى يقوم مهندس استشاري ضبط الجودة بإصدار تقرير عدم مطابقة رسمي (NCR) للمقاول؟",
+                options: [
+                    "عند حدوث مخالفة صريحة لرسومات المشروع أو مواصفات العقد أو الكود، أو تنفيذ بند تم رفضه مسبقاً دون معالجة.",
+                    "عند تأخر المقاول نصف ساعة عن الاجتماع الأسبوعي للمشروع.",
+                    "لأي استفسار فني بسيط يمكن حله شفوياً في الموقع خلال دقائق.",
+                    "بشكل دوري وروتيني في نهاية كل شهر لجميع البنود المنجزة."
+                ],
+                correct: 0,
+                explanation: "يُصدر الـ NCR عند وجود حيود جوهري عن المتطلبات الفنية والمواصفات التعاقدية والكودات (Non-conformance)، ويلزم المقاول بتقديم تحليل سبب جذري (Root Cause) وإجراء تصحيحي ووقائي معتمد للإغلاق."
+            },
+            {
+                topic: "طريقة التنفيذ (Method Statement)",
+                q: "ما هي الأهمية الهندسية لمستند 'طريقة التنفيذ' (Method Statement) في ضبط جودة المشاريع؟",
+                options: [
+                    "يوضح بالتفصيل الخطوات التنفيذية المتتابعة، والمعدات، ومسؤوليات الطاقم، ومعايير السلامة والجودة الواجب اتباعها قبل بدء النشاط.",
+                    "مستند محاسبي مالي يُحدد نسب الدفعات المستحقة للمقاول عن كل بند.",
+                    "كتالوج تجاري للموردين يوضح أسعار الخامات في السوق المحلي.",
+                    "شهادة معايرة خاصة بمحطة خلط الخرسانة المركزية فقط."
+                ],
+                correct: 0,
+                explanation: "طريقة التنفيذ (Method Statement) هي وثيقة فنية تحكم كيفية تنفيذ البند بجودة وأمان وفقاً للمواصفات، وتوضح تتابع الخطوات ومسؤوليات الفريق والمعدات ونقاط الفحص، وتعتمد من الاستشاري قبل السماح ببدء العمل."
+            },
+            {
+                topic: "الخرسانة الطازجة (Slump Test)",
+                q: "وصلت خلاطة خرسانة جاهزة بهبوط (Slump) قدره 22 سم، بينما الهبوط التصميمي المعتمد هو (10 ± 2.5) سم دون استخدام ملدنات فائقة. الإجراء الصحيح فوراً هو:",
+                options: [
+                    "رفض شحنة الخرسانة فوراً وإعادتها مع تحرير محضر رسمي، لمنع تأثير المياه الزائدة الكارثي على المقاومة والدمك.",
+                    "إضافة شيكارة أسمنت جافة داخل حلة الخلاطة لإعادة خفض الهبوط.",
+                    "صب الخرسانة في القواعد المسلحة لزيادة سيولتها وتسهيل ملء الفراغات.",
+                    "الانتظار ساعتين حتى تجف المياه الزائدة طبيعياً داخل الخلاطة ثم الصب."
+                ],
+                correct: 0,
+                explanation: "الزيادة الكبيرة في الهبوط غير المصرح بها تعني إضافة مياه غير محسوبة تؤدي إلى خلل بنسبة (الماء/الأسمنت) وانخفاض المقاومة وزيادة النفاذية والانكماش؛ وتفرض أصول الجودة رفض الشحنة بالكامل وتوثيق ذلك."
+            },
+            {
+                topic: "اختبارات حديد التسليح",
+                q: "ما هو الاختبار الميكانيكي الحاسم للتأكد من مطيلية حديد التسليح وقابليته للتشكيل دون حدوث شروخ بالثني في الموقع؟",
+                options: [
+                    "اختبار الإنحناء والإنحناء العكسي على البارد (Bend and Rebend Test).",
+                    "اختبار الكثافة النوعية والوزن الحجمي في مخروط الرمل.",
+                    "اختبار الصدم بمطرقة شميدت القياسية.",
+                    "اختبار التوصيل الكهربائي لأسياخ التسليح."
+                ],
+                correct: 0,
+                explanation: "اختبار الانحناء والانحناء العكسي (Bend and Rebend Test) يحدد مدى مطيلية السيخ ومقاومته للتصلد بالتشكيل (Strain Ageing) وظهور أي شروخ دقيقة عند التشكيل وعمل الجواكش والزوايا الإنشائية في الموقع."
+            },
+            {
+                topic: "معالجة الخرسانة (Curing)",
+                q: "ما هي المدة الدنيا لمعالجة الخرسانة بالماء المستمر طبقاً للكود المصري باستخدام الأسمنت البورتلاندي العادي في الطقس المعتدل؟",
+                options: [
+                    "لا تقل عن 7 أيام متتالية تبدأ فور تصلد سطح الخرسانة.",
+                    "يكتفي بيوم واحد فقط بعد الصب لتجفيف السطح.",
+                    "28 يوماً متواصلة حتى تكسير المكعبات النهائية.",
+                    "المعالجة اختيارية ولا تشترطها مواصفات الكود."
+                ],
+                correct: 0,
+                explanation: "ينص الكود المصري على استمرار معالجة الخرسانة رطباً لمدة لا تقل عن 7 أيام للأسمنت البورتلاندي العادي، و4 أيام للأسمنت سريع التصلد، لضمان استمرار تفاعل إماهة الأسمنت واكتساب المقاومة وسد المسام الداخلية."
+            },
+            {
+                topic: "صب الخرسانة في الجو الحار",
+                q: "في الأجواء الحارة (Hot Weather Concreting)، ما هي أقصى درجة حرارة مفضلة لخليط الخرسانة الطازجة عند وصولها للموقع؟",
+                options: [
+                    "ألا تتجاوز 30°C إلى 32°C لتفادي الفقد السريع للهبوط وشروخ الانكماش اللدن والحراري.",
+                    "تصل إلى 50°C دون أي تأثير فني على الخواص.",
+                    "ألا تقل عن 40°C لتحفيز سرعة الشك الابتدائي.",
+                    "لا يوجد سقف لدرجة حرارة الصب طالما تم دمك الخرسانة جيداً."
+                ],
+                correct: 0,
+                explanation: "تشترط معظم المواصفات والكودات ألا تزيد درجة حرارة الخرسانة الطازجة عن 30°C إلى 32°C عند التفريغ، ويتم اللجوء لخلط المياه بالثلج المجروش أو تبريد الركام لتجنب الشروخ والانخفاض الحاد في جودة الخرسانة."
+            },
+            {
+                topic: "توكيد الجودة (QA) وضبط الجودة (QC)",
+                q: "ما هو الفارق الأساسي بين توكيد الجودة (QA) وضبط الجودة (QC) في منظومة إدارة مشاريع التشييد؟",
+                options: [
+                    "QA هو نظام وقائي موجه للعمليات لمنع حدوث العيوب مقدماً، بينما QC هو نظام تنفيذي موجه للمنتج لفحص واختبار الأعمال ومطابقتها للمواصفات.",
+                    "QA يطبقه مقاول الباطن فقط، بينما QC يطبقه المالك حصراً.",
+                    "QA يخص أعمال التوريدات والمستودعات فقط، و QC يخص الفحوصات المعملية.",
+                    "المصطلحان مترادفان تماماً ولا يوجد اختلاف بينهما في المسؤوليات."
+                ],
+                correct: 0,
+                explanation: "توكيد الجودة (Quality Assurance) نظام يضع الخطط والسياسات والإجراءات الوقائية (Process-oriented) لضمان عدم حدوث أخطاء، بينما مراقبة الجودة (Quality Control) هي الفحص الميداني والمخبري الفعلي للمنتجات والأعمال (Product-oriented)."
+            },
+            {
+                topic: "فحص المواد الموردة (MIR)",
+                q: "ما هو مستند 'MIR' في إدارة جودة المشروع، وما هي مسؤوليته؟",
+                options: [
+                    "Material Inspection Request، وهو طلب يقدمه المقاول للاستشاري لفحص المواد الموردة ومطابقتها للاعتمادات والمواصفات قبل استخدامها.",
+                    "Monthly Invoice Report لحساب المستحقات المالية للمقاول.",
+                    "Method of Installation Record لترتيب ورديات العمالة بالموقع.",
+                    "Master Inspection Rule لتحديد شروط السلامة والصحة المهنية."
+                ],
+                correct: 0,
+                explanation: "طلب فحص المواد (Material Inspection Request - MIR) يحرره المقاول عند وصول أي شحنة مواد (حديد، أسمنت، دهانات، عوازل) للتأكد من مطابقتها للعينات المعتمدة سلفاً (Material Submittal) ومراجعة شهادات المنشأ قبل تخزينها أو استخدامها."
+            },
+            {
+                topic: "الكود المصري - اختبار الركام الخشن",
+                q: "يُجرى اختبار لوس أنجلوس (Los Angeles Abrasion Test) على الركام الخشن (السن/الزلط) بهدف قياس:",
+                options: [
+                    "مقاومة الركام للتآكل والبري والصدم الميكانيكي الناتج عن الخلط والدمك والأحمال.",
+                    "التركيب الكيميائي للسيليكا النشطة بالركام.",
+                    "نسبة امتصاص حبيبات الركام لمياه الخلط.",
+                    "الوزن النوعي المطلق للركام بعد الحرق بالفرن."
+                ],
+                correct: 0,
+                explanation: "يقيس اختبار لوس أنجلوس نسبة تفتت الركام الخشن نتيجة الاحتكاك والصدم مع كرات فولاذية داخل أسطوانة دوارة، مما يعطي مؤشراً دقيقاً لصلابة الركام ومقاومته للتكسر أثناء الخلط والدك والاستخدام."
+            },
+            {
+                topic: "الكود المصري - اختبار الركام الصغير",
+                q: "ما هو الهدف الرئيسي من اختبار 'مكافئ الرمل' (Sand Equivalent Test) للركام الصغير؟",
+                options: [
+                    "تحديد النسبة الحجمية للرمل الصالح مقارنة بنسبة المواد الطينية والغبار والمواد الناعمة الضارة.",
+                    "معرفة اللون الجيولوجي لحبيبات الرمل الموردة.",
+                    "قياس حرارة الإماهة الناتجة عن رمال المحاجر.",
+                    "معرفة المسامية السطحية للرمل المعالج كيميائياً."
+                ],
+                correct: 0,
+                explanation: "اختبار مكافئ الرمل يقيس نقاء الرمل من الأطيان والمواد العالقة الدقيقة جداً، حيث يؤدي ارتفاع الطين إلى تقليل تماسك معجون الأسمنت مع الركام وزيادة شروخ الانكماش بالخرسانة."
+            },
+            {
+                topic: "فحص الصدأ في حديد التسليح",
+                q: "ما هو الضابط الهندسي الحاسم لرفض حديد التسليح المصاب بالصدأ في موقع العمل؟",
+                options: [
+                    "إذا تحول الصدأ إلى قشور نافذة وأدى بعد تنظيفه بسلك صلب إلى نقص وزن المتر الطولي أو مقطع السيخ عن الحدود المسموحة بالمواصفات.",
+                    "إذا كان هناك صدأ سطحي خفيف يتطاير بالفرشاة السلك دون تأثير على المقطع.",
+                    "إذا تغير لون السيخ من الأسود إلى البني المحمر بعد تعرضه للهواء ليومين.",
+                    "إذا كان حديد التسليح قد تم تخزينه لأكثر من 5 أيام في الموقع."
+                ],
+                correct: 0,
+                explanation: "الصدأ السطحي الخفيف لا يقلل من جودة الحديد بل قد يحسن التماسك، ولكن إذا كان الصدأ قشرياً وعميقاً (Flaking/Pitting) وتسبب في إنقاص الوزن النوعي للسيخ بالمتر الطولي أو قطره الفعال عن حدود المواصفة القياسية يُرفض فوراً."
+            },
+            {
+                topic: "أعمال البياض (اللياسة والطرطشة)",
+                q: "ما هي الشروط الهندسية الواجب تحققها لاستلام طبقة 'الطرطشة المسمارية' قبل بدء أعمال البياض (اللياسة) على الحوائط؟",
+                options: [
+                    "أن تكون خشنة ومحببة وقوية وتغطي كامل السطح دون تسييل، وترش بالماء لمدة 3 أيام على الأقل لضمان التماسك التام.",
+                    "أن تكون شديدة النعومة وملساء لمنع احتكاك الطبقات التالية.",
+                    "أن يضاف لها معجون جبسي أبيض لسرعة الجفاف خلال 15 دقيقة.",
+                    "أن تترك لتجف تحت أشعة الشمس المباشرة بدون أي معالجة بالماء."
+                ],
+                correct: 0,
+                explanation: "الطرطشة المسمارية هي أساس الالتصاق الميكانيكي لأعمال اللياسة؛ وتشترط المواصفات أن تكون ذات قوام خشن بارز حاد الحبيبات ومروية بالماء عدة أيام حتى تصبح شديدة الصلابة ومقاومة للتفتت باليد."
+            },
+            {
+                topic: "الكود المصري - سمك الغطاء الخرساني",
+                q: "ما هو الدور الحاسم لاشتراطات الكود المصري بشأن الحد الأدنى لسمك الغطاء الخرساني (Concrete Cover)؟",
+                options: [
+                    "حماية حديد التسليح من الصدأ والتعرض البيئي، وضمان مقاومة الحريق، ونقل إجهادات التماسك (Bond) بأمان بين الحديد والخرسانة.",
+                    "تقليل وزن المنشأ الخرساني الذاتي على التربة.",
+                    "تسريع زمن فك الشدات الخشبية في الأسقف الكبيرة.",
+                    "زيادة ليونة الخرسانة الطازجة أثناء الضخ بالمضخات الهيدروليكية."
+                ],
+                correct: 0,
+                explanation: "الغطاء الخرساني عنصر أساسي لديمومة المنشأ (Durability)؛ فهو يحمي قضبان الصلب من نفاذ الكلوريدات والرطوبة المسببة للصدأ، ويوفر العزل الحراري لمقاومة الحريق، ويضمن إحاطة الخرسانة بالسيخ لنقل إجهادات التماسك بكفاءة."
+            },
+            {
+                topic: "أعمال التعشيش (Honeycombing)",
+                q: "عند فك شدة عمود خرساني رئيسي، تلاحظ وجود تعشيش خرساني شديد مع ظهور أسياخ التسليح في الثلث السفلي. الإجراء الميداني المهني السليم هو:",
+                options: [
+                    "إصدار NCR فوراً، وإيقاف تحميل العمود مع التدعيم المؤقت، وتقديم خطة إصلاح معتمدة بمواد جروت لا انكماشية (Non-shrink grout) وبإشراف استشاري.",
+                    "تغطية التعشيش سريعاً بمونة أسمنتية عادية لإخفائه ومواصلة العمل دون إشعار أحد.",
+                    "إزالة العمود فوراً بالمطرقة والشاكوش اليدوي دون استشارة المصمم الإنشائي.",
+                    "صب السقف التالي مباشرة حيث أن التعشيش في الثلث السفلي لا يؤثر على الأحمال."
+                ],
+                correct: 0,
+                explanation: "التعشيش النافذ يهدد استقرار العمود ويقلل مساحة المقطع الخرساني الفعال لمقاومة الضغط، لذا يلزم إصدار تقرير عدم مطابقة فوراً ودراسة التدعيم المؤقت، ثم تكسير الأجزاء الضعيفة واستخدام مواد إصلاح متخصصة كالجروت الإيبوكسي أو الأسمنتي غير المنكمش تحت إشراف الاستشاري."
+            }
+        ];
+
+        // System State
+        let currentIdx = 0;
+        let userSelections = new Array(quizBank.length).fill(null);
+
+        // View Elements
+        const welcomeView = document.getElementById('welcome-view');
+        const quizView = document.getElementById('quiz-view');
+        const resultsView = document.getElementById('results-view');
+        const progressIndicator = document.getElementById('progress-indicator');
+        const headerCurr = document.getElementById('header-curr');
+        const headerTotal = document.getElementById('header-total');
+        const topicBadge = document.getElementById('topic-badge');
+        const stepTxt = document.getElementById('step-txt');
+        const questionText = document.getElementById('question-text');
+        const optionsWrapper = document.getElementById('options-wrapper');
+        const feedbackPanel = document.getElementById('feedback-panel');
+        const feedbackBadge = document.getElementById('feedback-badge');
+        const feedbackTitle = document.getElementById('feedback-title');
+        const feedbackDesc = document.getElementById('feedback-desc');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const finishBtn = document.getElementById('finish-btn');
+
+        function startQuiz() {
+            welcomeView.classList.add('hidden');
+            resultsView.classList.add('hidden');
+            quizView.classList.remove('hidden');
+            currentIdx = 0;
+            userSelections.fill(null);
+            headerTotal.textContent = quizBank.length;
+            renderCurrentCard();
+        }
+
+        function renderCurrentCard() {
+            const item = quizBank[currentIdx];
+            const hasAnswered = userSelections[currentIdx] !== null;
+
+            // Update Progress bar & counters
+            const progress = ((currentIdx + 1) / quizBank.length) * 100;
+            progressIndicator.style.width = `${progress}%`;
+            headerCurr.textContent = currentIdx + 1;
+            stepTxt.textContent = `سؤال ${currentIdx + 1} من ${quizBank.length}`;
+            topicBadge.textContent = item.topic;
+            questionText.textContent = item.q;
+
+            // Clear options and render
+            optionsWrapper.innerHTML = '';
+            const labels = ['أ', 'ب', 'ج', 'د'];
+
+            item.options.forEach((optText, oIdx) => {
+                const optButton = document.createElement('button');
+                optButton.className = "w-full text-right p-3.5 sm:p-4 rounded-xl border text-xs sm:text-sm font-semibold transition flex items-start gap-3 touch-action-manipulation ";
+
+                if (!hasAnswered) {
+                    optButton.className += "border-slate-200 bg-white hover:border-blue-400 hover:bg-blue-50/40 text-slate-800 active:scale-[0.99]";
+                    optButton.onclick = () => onSelectOption(oIdx);
+                } else {
+                    optButton.disabled = true;
+                    if (oIdx === item.correct) {
+                        optButton.className += "border-emerald-500 bg-emerald-50 text-emerald-900 font-bold shadow-sm";
+                    } else if (oIdx === userSelections[currentIdx]) {
+                        optButton.className += "border-rose-400 bg-rose-50 text-rose-900 font-bold";
+                    } else {
+                        optButton.className += "border-slate-200 bg-slate-50 text-slate-400 opacity-60";
+                    }
+                }
+
+                optButton.innerHTML = `
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-slate-100 text-slate-700 text-xs font-bold shrink-0 mt-0.5">${labels[oIdx]}</span>
+                    <span class="flex-grow">${optText}</span>
+                `;
+                optionsWrapper.appendChild(optButton);
+            });
+
+            // Handle Explanatory Feedback
+            if (hasAnswered) {
+                const isCorrect = userSelections[currentIdx] === item.correct;
+                feedbackPanel.classList.remove('hidden');
+                if (isCorrect) {
+                    feedbackPanel.className = "p-3.5 rounded-xl border border-emerald-200 bg-emerald-50/70 text-emerald-950 animate-fade-in mb-4";
+                    feedbackBadge.textContent = "✅";
+                    feedbackTitle.textContent = "إجابة صحيحة ومطابقة للمواصفة:";
+                    feedbackTitle.className = "font-bold mb-1 text-emerald-900";
+                } else {
+                    feedbackPanel.className = "p-3.5 rounded-xl border border-rose-200 bg-rose-50/70 text-rose-950 animate-fade-in mb-4";
+                    feedbackBadge.textContent = "❌";
+                    feedbackTitle.textContent = "إجابة غير صحيحة - السند الهندسي للكود:";
+                    feedbackTitle.className = "font-bold mb-1 text-rose-900";
+                }
+                feedbackDesc.textContent = item.explanation;
+            } else {
+                feedbackPanel.classList.add('hidden');
+            }
+
+            // Navigation Button States
+            prevBtn.disabled = currentIdx === 0;
+
+            if (currentIdx === quizBank.length - 1) {
+                nextBtn.classList.add('hidden');
+                finishBtn.classList.remove('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+                finishBtn.classList.add('hidden');
+            }
+        }
+
+        function onSelectOption(choiceIdx) {
+            userSelections[currentIdx] = choiceIdx;
+            renderCurrentCard();
+        }
+
+        function goToNextQuestion() {
+            if (currentIdx < quizBank.length - 1) {
+                currentIdx++;
+                renderCurrentCard();
+            }
+        }
+
+        function goToPrevQuestion() {
+            if (currentIdx > 0) {
+                currentIdx--;
+                renderCurrentCard();
+            }
+        }
+
+        function calculateAndShowResults() {
+            quizView.classList.add('hidden');
+            resultsView.classList.remove('hidden');
+            progressIndicator.style.width = '100%';
+
+            let totalCorrect = 0;
+            userSelections.forEach((val, idx) => {
+                if (val === quizBank[idx].correct) totalCorrect++;
+            });
+
+            const percent = Math.round((totalCorrect / quizBank.length) * 100);
+            document.getElementById('percentage-score').textContent = `${percent}%`;
+            document.getElementById('num-correct').textContent = totalCorrect;
+
+            const iconBox = document.getElementById('result-icon-box');
+            const performanceBadge = document.getElementById('performance-badge');
+            const resultStatus = document.getElementById('result-status');
+
+            if (percent >= 84) {
+                iconBox.className = "w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl bg-emerald-100 text-emerald-600";
+                iconBox.textContent = "🌟";
+                resultStatus.textContent = "تهانينا! مؤهل بدرجة استشاري";
+                performanceBadge.className = "mt-2.5 inline-block text-xs font-bold px-3 py-1 rounded-full border border-emerald-300 bg-emerald-100 text-emerald-800";
+                performanceBadge.textContent = "مستوى ممتاز: استيعاب متكامل لاشتراطات الكود المصري وضبط الجودة";
+            } else if (percent >= 68) {
+                iconBox.className = "w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl bg-blue-100 text-blue-600";
+                iconBox.textContent = "🎯";
+                resultStatus.textContent = "مستوى جيد مع حاجة لمراجعة بسيطة";
+                performanceBadge.className = "mt-2.5 inline-block text-xs font-bold px-3 py-1 rounded-full border border-blue-300 bg-blue-100 text-blue-800";
+                performanceBadge.textContent = "مستوى جيد: اجتياز مقبول مع ضرورة مراجعة بعض تفاصيل القبول والرفض";
+            } else {
+                iconBox.className = "w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 text-3xl bg-amber-100 text-amber-600";
+                iconBox.textContent = "📚";
+                resultStatus.textContent = "يحتاج مزيد من المراجعة والتحضير";
+                performanceBadge.className = "mt-2.5 inline-block text-xs font-bold px-3 py-1 rounded-full border border-amber-300 bg-amber-100 text-amber-800";
+                performanceBadge.textContent = "مستوى متوسط: يُنصح بإعادة مراجعة كود الخرسانة ECP 203 واختبارات الموقع";
+            }
+
+            // Build Comprehensive Review List
+            const reviewContainer = document.getElementById('review-list');
+            reviewContainer.innerHTML = '';
+
+            quizBank.forEach((qItem, idx) => {
+                const userChoice = userSelections[idx];
+                const isPassed = userChoice === qItem.correct;
+                const wrapper = document.createElement('div');
+                wrapper.className = `p-3 rounded-xl border text-right ${isPassed ? 'border-emerald-200 bg-emerald-50/50' : 'border-rose-200 bg-rose-50/50'}`;
+
+                const chosenTxt = userChoice !== null ? qItem.options[userChoice] : "لم يتم الحل";
+                const rightTxt = qItem.options[qItem.correct];
+
+                wrapper.innerHTML = `
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="font-bold text-slate-800 text-xs">س ${idx + 1}: ${qItem.topic}</span>
+                        <span class="text-[11px] font-bold ${isPassed ? 'text-emerald-700' : 'text-rose-700'}">${isPassed ? 'إجابة صحيحة ✓' : 'إجابة خاطئة ✗'}</span>
+                    </div>
+                    <p class="text-slate-800 font-semibold mb-1 text-xs leading-snug">${qItem.q}</p>
+                    ${!isPassed ? `<p class="text-rose-700 text-[11px] mb-0.5"><span class="font-bold">إجابتك:</span> ${chosenTxt}</p>` : ''}
+                    <p class="text-emerald-800 text-[11px] font-bold mb-1.5"><span class="font-bold">الإجابة الصحيحة:</span> ${rightTxt}</p>
+                    <p class="text-slate-600 text-[11px] bg-white/70 p-2 rounded-lg border border-slate-200/60 leading-relaxed">${qItem.explanation}</p>
+                `;
+                reviewContainer.appendChild(wrapper);
+            });
+        }
+    </script>
+</body>
+</html>
