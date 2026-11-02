@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Japan Culture - Questions & Answers</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 18px;
+  }
+  .hero {
+    background: white;
+    border-radius: 18px;
+    padding: 24px 20px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.07);
+    text-align: center;
+  }
+  h1 { margin: 0 0 8px; font-size: 30px; }
+  .subtitle { margin: 0; color: #6b7280; }
+  .section-title {
+    margin: 26px 0 12px;
+    font-size: 22px;
+  }
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.06);
+  }
+  .qnum {
+    font-weight: bold;
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 6px;
+  }
+  .question {
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .arabic {
+    direction: rtl;
+    text-align: right;
+    color: #4b5563;
+    margin-bottom: 12px;
+  }
+  button {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 15px;
+    cursor: pointer;
+    background: #111827;
+    color: white;
+    margin-top: 5px;
+  }
+  button:hover { opacity: .9; }
+  .answer {
+    display: none;
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 10px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+  }
+  .answer strong { display: block; margin-bottom: 5px; }
+  .options label {
+    display: block;
+    padding: 9px 10px;
+    margin: 7px 0;
+    border: 1px solid #e5e7eb;
+    border-radius: 9px;
+    background: #fafafa;
+  }
+  .footer {
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+    padding: 20px 0 8px;
+  }
+  @media (max-width: 600px) {
+    .container { padding: 12px; }
+    h1 { font-size: 26px; }
+    .question { font-size: 18px; }
+  }
+</style>
+<script>
+function toggleAnswer(id, btn) {
+  const el = document.getElementById(id);
+  if (el.style.display === "block") {
+    el.style.display = "none";
+    btn.textContent = "Show Answer";
+  } else {
+    el.style.display = "block";
+    btn.textContent = "Hide Answer";
+  }
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <h1>Japan Culture</h1>
+    <p class="subtitle">Questions & Answers Practice</p>
+  </div>
+
+  <h2 class="section-title">Part 1: Question & Answer</h2>
+
+  <div class="card">
+    <div class="qnum">Question 1</div>
+    <div class="question">What is Japan famous for?</div>
+    <div class="arabic">بماذا تشتهر اليابان؟</div>
+    <button onclick="toggleAnswer('a1', this)">Show Answer</button>
+    <div class="answer" id="a1">
+      <strong>Answer:</strong>
+      Japan is famous for its technology, delicious food, beautiful nature, and interesting traditions.
+      <div class="arabic">تشتهر اليابان بالتكنولوجيا والطعام اللذيذ والطبيعة الجميلة والتقاليد المميزة.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 2</div>
+    <div class="question">What is the most famous Japanese food?</div>
+    <div class="arabic">ما أشهر طعام ياباني؟</div>
+    <button onclick="toggleAnswer('a2', this)">Show Answer</button>
+    <div class="answer" id="a2">
+      <strong>Answer:</strong>
+      The most famous Japanese food is sushi.
+      <div class="arabic">أشهر طعام ياباني هو السوشي.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 3</div>
+    <div class="question">What is sushi usually made with?</div>
+    <div class="arabic">ممَّ يُصنع السوشي عادة؟</div>
+    <button onclick="toggleAnswer('a3', this)">Show Answer</button>
+    <div class="answer" id="a3">
+      <strong>Answer:</strong>
+      Sushi is usually made with rice, fish, and vegetables.
+      <div class="arabic">يُصنع السوشي عادة من الأرز والسمك والخضروات.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 4</div>
+    <div class="question">What is ramen?</div>
+    <div class="arabic">ما هو الرامن؟</div>
+    <button onclick="toggleAnswer('a4', this)">Show Answer</button>
+    <div class="answer" id="a4">
+      <strong>Answer:</strong>
+      Ramen is a bowl of noodles served in hot soup with meat, eggs, or vegetables.
+      <div class="arabic">الرامن طبق من النودلز يُقدَّم في شوربة ساخنة مع اللحم أو البيض أو الخضروات.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 5</div>
+    <div class="question">What is Mount Fuji?</div>
+    <div class="arabic">ما هو جبل فوجي؟</div>
+    <button onclick="toggleAnswer('a5', this)">Show Answer</button>
+    <div class="answer" id="a5">
+      <strong>Answer:</strong>
+      Mount Fuji is the highest mountain in Japan.
+      <div class="arabic">جبل فوجي هو أعلى جبل في اليابان.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 6</div>
+    <div class="question">Why do tourists visit Mount Fuji?</div>
+    <div class="arabic">لماذا يزور السياح جبل فوجي؟</div>
+    <button onclick="toggleAnswer('a6', this)">Show Answer</button>
+    <div class="answer" id="a6">
+      <strong>Answer:</strong>
+      They visit Mount Fuji to enjoy the beautiful views and take pictures.
+      <div class="arabic">يزورونه للاستمتاع بالمناظر الجميلة والتقاط الصور.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 7</div>
+    <div class="question">What is Hanami?</div>
+    <div class="arabic">ما هو الهانامي؟</div>
+    <button onclick="toggleAnswer('a7', this)">Show Answer</button>
+    <div class="answer" id="a7">
+      <strong>Answer:</strong>
+      Hanami is the tradition of enjoying cherry blossoms with family and friends.
+      <div class="arabic">الهانامي هو تقليد الاستمتاع بأزهار الكرز مع العائلة والأصدقاء.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 8</div>
+    <div class="question">What do people do during Tanabata?</div>
+    <div class="arabic">ماذا يفعل الناس خلال مهرجان تاناباتا؟</div>
+    <button onclick="toggleAnswer('a8', this)">Show Answer</button>
+    <div class="answer" id="a8">
+      <strong>Answer:</strong>
+      They write their wishes on small pieces of paper and hang them on bamboo trees.
+      <div class="arabic">يكتبون أمنياتهم على قطع صغيرة من الورق ويعلقونها على أشجار الخيزران.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 9</div>
+    <div class="question">What does a traditional Japanese bride often wear?</div>
+    <div class="arabic">ماذا ترتدي العروس اليابانية التقليدية غالبًا؟</div>
+    <button onclick="toggleAnswer('a9', this)">Show Answer</button>
+    <div class="answer" id="a9">
+      <strong>Answer:</strong>
+      She often wears a beautiful white kimono.
+      <div class="arabic">غالبًا ما ترتدي كيمونو أبيض جميلًا.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 10</div>
+    <div class="question">What is the most famous traditional clothing in Japan?</div>
+    <div class="arabic">ما أشهر زي تقليدي في اليابان؟</div>
+    <button onclick="toggleAnswer('a10', this)">Show Answer</button>
+    <div class="answer" id="a10">
+      <strong>Answer:</strong>
+      The most famous traditional clothing in Japan is the kimono.
+      <div class="arabic">أشهر زي تقليدي في اليابان هو الكيمونو.</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">Part 2: Multiple Choice</h2>
+
+  <div class="card">
+    <div class="qnum">Question 11</div>
+    <div class="question">Which food is most famous in Japan?</div>
+    <div class="arabic">أي طعام هو الأشهر في اليابان؟</div>
+    <div class="options">
+      <label>A. Pizza</label>
+      <label>B. Sushi</label>
+      <label>C. Tacos</label>
+    </div>
+    <button onclick="toggleAnswer('a11', this)">Show Answer</button>
+    <div class="answer" id="a11"><strong>Answer:</strong> B. Sushi</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 12</div>
+    <div class="question">Which mountain is the highest in Japan?</div>
+    <div class="arabic">ما أعلى جبل في اليابان؟</div>
+    <div class="options">
+      <label>A. Mount Fuji</label>
+      <label>B. Mount Everest</label>
+      <label>C. Mount Kilimanjaro</label>
+    </div>
+    <button onclick="toggleAnswer('a12', this)">Show Answer</button>
+    <div class="answer" id="a12"><strong>Answer:</strong> A. Mount Fuji</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 13</div>
+    <div class="question">What color are cherry blossoms often?</div>
+    <div class="arabic">ما لون أزهار الكرز غالبًا؟</div>
+    <div class="options">
+      <label>A. Pink and white</label>
+      <label>B. Blue and black</label>
+      <label>C. Green and orange</label>
+    </div>
+    <button onclick="toggleAnswer('a13', this)">Show Answer</button>
+    <div class="answer" id="a13"><strong>Answer:</strong> A. Pink and white</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 14</div>
+    <div class="question">Tanabata is also known as:</div>
+    <div class="arabic">يُعرف تاناباتا أيضًا باسم:</div>
+    <div class="options">
+      <label>A. The Flower Festival</label>
+      <label>B. The Star Festival</label>
+      <label>C. The Food Festival</label>
+    </div>
+    <button onclick="toggleAnswer('a14', this)">Show Answer</button>
+    <div class="answer" id="a14"><strong>Answer:</strong> B. The Star Festival</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 15</div>
+    <div class="question">What do people hang on bamboo trees during Tanabata?</div>
+    <div class="arabic">ماذا يعلق الناس على أشجار الخيزران خلال تاناباتا؟</div>
+    <div class="options">
+      <label>A. Shoes</label>
+      <label>B. Small pieces of paper with wishes</label>
+      <label>C. Lanterns only</label>
+    </div>
+    <button onclick="toggleAnswer('a15', this)">Show Answer</button>
+    <div class="answer" id="a15"><strong>Answer:</strong> B. Small pieces of paper with wishes</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 16</div>
+    <div class="question">What is Tokyo Tower famous for?</div>
+    <div class="arabic">بماذا يشتهر برج طوكيو؟</div>
+    <div class="options">
+      <label>A. Its amazing city views</label>
+      <label>B. Its beach</label>
+      <label>C. Its farms</label>
+    </div>
+    <button onclick="toggleAnswer('a16', this)">Show Answer</button>
+    <div class="answer" id="a16"><strong>Answer:</strong> A. Its amazing city views</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 17</div>
+    <div class="question">What is San-san-kudo?</div>
+    <div class="arabic">ما هو سان سان كودو؟</div>
+    <div class="options">
+      <label>A. A Japanese wedding tradition</label>
+      <label>B. A Japanese food</label>
+      <label>C. A mountain</label>
+    </div>
+    <button onclick="toggleAnswer('a17', this)">Show Answer</button>
+    <div class="answer" id="a17"><strong>Answer:</strong> A. A Japanese wedding tradition</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 18</div>
+    <div class="question">What is special about the kimono?</div>
+    <div class="arabic">ما المميز في الكيمونو؟</div>
+    <div class="options">
+      <label>A. It has wide sleeves and a special belt</label>
+      <label>B. It is a sports uniform</label>
+      <label>C. It is always black</label>
+    </div>
+    <button onclick="toggleAnswer('a18', this)">Show Answer</button>
+    <div class="answer" id="a18"><strong>Answer:</strong> A. It has wide sleeves and a special belt</div>
+  </div>
+
+  <h2 class="section-title">Part 3: True or False</h2>
+
+  <div class="card">
+    <div class="qnum">Question 19</div>
+    <div class="question">Japan is famous for technology and traditions.</div>
+    <div class="arabic">تشتهر اليابان بالتكنولوجيا والتقاليد.</div>
+    <button onclick="toggleAnswer('a19', this)">Show Answer</button>
+    <div class="answer" id="a19"><strong>Answer:</strong> True</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 20</div>
+    <div class="question">Ramen is a type of mountain.</div>
+    <div class="arabic">الرامن نوع من الجبال.</div>
+    <button onclick="toggleAnswer('a20', this)">Show Answer</button>
+    <div class="answer" id="a20"><strong>Answer:</strong> False</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 21</div>
+    <div class="question">Mount Fuji is the highest mountain in Japan.</div>
+    <div class="arabic">جبل فوجي هو أعلى جبل في اليابان.</div>
+    <button onclick="toggleAnswer('a21', this)">Show Answer</button>
+    <div class="answer" id="a21"><strong>Answer:</strong> True</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 22</div>
+    <div class="question">Hanami is related to cherry blossoms.</div>
+    <div class="arabic">يرتبط الهانامي بأزهار الكرز.</div>
+    <button onclick="toggleAnswer('a22', this)">Show Answer</button>
+    <div class="answer" id="a22"><strong>Answer:</strong> True</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 23</div>
+    <div class="question">During Tanabata, people write wishes on paper.</div>
+    <div class="arabic">خلال تاناباتا، يكتب الناس أمنياتهم على الورق.</div>
+    <button onclick="toggleAnswer('a23', this)">Show Answer</button>
+    <div class="answer" id="a23"><strong>Answer:</strong> True</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 24</div>
+    <div class="question">A traditional Japanese bride often wears a white kimono.</div>
+    <div class="arabic">ترتدي العروس اليابانية التقليدية غالبًا كيمونو أبيض.</div>
+    <button onclick="toggleAnswer('a24', this)">Show Answer</button>
+    <div class="answer" id="a24"><strong>Answer:</strong> True</div>
+  </div>
+
+  <div class="card">
+    <div class="qnum">Question 25</div>
+    <div class="question">The kimono is a traditional Japanese clothing item.</div>
+    <div class="arabic">الكيمونو من الملابس اليابانية التقليدية.</div>
+    <button onclick="toggleAnswer('a25', this)">Show Answer</button>
+    <div class="answer" id="a25"><strong>Answer:</strong> True</div>
+  </div>
+
+  <div class="footer">
+    Japan Culture Practice • 25 Questions
+  </div>
+
+</div>
+</body>
+</html>
