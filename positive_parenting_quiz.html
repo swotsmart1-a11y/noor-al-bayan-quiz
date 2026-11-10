@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Positive Parenting - Vocabulary & Sentences</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, "Segoe UI", sans-serif;
+      background: #f4f6f8;
+      color: #1f2937;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 20px;
+    }
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .tab {
+      flex: 1;
+      border: 0;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #e5e7eb;
+    }
+    .tab.active {
+      background: #111827;
+      color: white;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.08);
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .counter {
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+    .label {
+      text-align: center;
+      color: #6b7280;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+    .question {
+      font-size: 24px;
+      text-align: center;
+      font-weight: bold;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .answer {
+      display: none;
+      text-align: center;
+      font-size: 22px;
+      line-height: 1.6;
+      padding: 16px;
+      border-radius: 12px;
+      background: #f3f4f6;
+      direction: ltr;
+    }
+    .answer.show { display: block; }
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    button.control {
+      flex: 1;
+      min-width: 120px;
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .show-btn {
+      background: #2563eb;
+      color: white;
+    }
+    .next-btn {
+      background: #16a34a;
+      color: white;
+    }
+    .prev-btn {
+      background: #d1d5db;
+      color: #111827;
+    }
+    .list {
+      margin-top: 24px;
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.05);
+    }
+    .list h2 {
+      font-size: 18px;
+      margin-top: 0;
+    }
+    .list-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      line-height: 1.7;
+    }
+    .list-item:last-child { border-bottom: 0; }
+    .eng {
+      direction: ltr;
+      display: inline-block;
+      font-weight: bold;
+    }
+    @media (max-width: 520px) {
+      .question { font-size: 21px; }
+      .answer { font-size: 19px; }
+      h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Positive Parenting</h1>
+    <div class="subtitle">14 كلمة + 7 جمل | سؤال وجواب</div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="setMode('words')">14 كلمة</button>
+      <button class="tab" onclick="setMode('sentences')">7 جمل</button>
+    </div>
+
+    <div class="card">
+      <div class="counter" id="counter"></div>
+      <div class="label" id="label">ما معنى هذه الكلمة بالإنجليزية؟</div>
+      <div class="question" id="question"></div>
+      <div class="answer" id="answer"></div>
+
+      <div class="controls">
+        <button class="control prev-btn" onclick="prevCard()">السابق</button>
+        <button class="control show-btn" onclick="showAnswer()">إظهار الإجابة</button>
+        <button class="control next-btn" onclick="nextCard()">التالي</button>
+      </div>
+    </div>
+
+    <div class="list" id="fullList"></div>
+  </div>
+
+  <script>
+    const words = [
+      {q:"التربية الإيجابية", a:"Positive parenting"},
+      {q:"الاحترام", a:"Respect"},
+      {q:"التفهم", a:"Understanding"},
+      {q:"يشجّع", a:"Encourage"},
+      {q:"العقاب", a:"Punishment"},
+      {q:"السلوك", a:"Behavior"},
+      {q:"خطأ", a:"Mistake"},
+      {q:"يمدح / يشيد", a:"Praise"},
+      {q:"القواعد", a:"Rules"},
+      {q:"الحدود", a:"Limits"},
+      {q:"هادئًا / بهدوء", a:"Calmly"},
+      {q:"قدوة", a:"Role model"},
+      {q:"واثق", a:"Confident"},
+      {q:"مسؤول", a:"Responsible"}
+    ];
+
+    const sentences = [
+      {q:"التربية الإيجابية مهمة جدًا للأطفال.", a:"Positive parenting is very important for children."},
+      {q:"يجب على الآباء الاستماع إلى أطفالهم.", a:"Parents should listen to their children."},
+      {q:"يجب على الآباء التحدث مع أطفالهم بهدوء.", a:"Parents should talk to their children calmly."},
+      {q:"الأطفال يحتاجون إلى قواعد وحدود واضحة.", a:"Children need clear rules and limits."},
+      {q:"يجب على الآباء تشجيع أطفالهم.", a:"Parents should encourage their children."},
+      {q:"يجب أن يكون الآباء قدوة جيدة.", a:"Parents should be good role models."},
+      {q:"التربية الإيجابية تساعد الأطفال على أن يصبحوا واثقين ومسؤولين.", a:"Positive parenting helps children become confident and responsible."}
+    ];
+
+    let mode = "words";
+    let index = 0;
+
+    function currentData() {
+      return mode === "words" ? words : sentences;
+    }
+
+    function render() {
+      const data = currentData();
+      const item = data[index];
+      document.getElementById("counter").textContent = `${index + 1} / ${data.length}`;
+      document.getElementById("question").textContent = item.q;
+      const ans = document.getElementById("answer");
+      ans.textContent = item.a;
+      ans.classList.remove("show");
+      document.getElementById("label").textContent =
+        mode === "words" ? "ما معنى هذه الكلمة بالإنجليزية؟" : "كيف تقول هذه الجملة بالإنجليزية؟";
+
+      const list = document.getElementById("fullList");
+      list.innerHTML = `<h2>${mode === "words" ? "كل الكلمات" : "كل الجمل"}</h2>` +
+        data.map((x, i) =>
+          `<div class="list-item"><strong>${i+1}.</strong> ${x.q}<br><span class="eng">${x.a}</span></div>`
+        ).join("");
+    }
+
+    function showAnswer() {
+      document.getElementById("answer").classList.add("show");
+    }
+
+    function nextCard() {
+      const data = currentData();
+      index = (index + 1) % data.length;
+      render();
+    }
+
+    function prevCard() {
+      const data = currentData();
+      index = (index - 1 + data.length) % data.length;
+      render();
+    }
+
+    function setMode(newMode) {
+      mode = newMode;
+      index = 0;
+      document.querySelectorAll(".tab").forEach(btn => btn.classList.remove("active"));
+      const tabs = document.querySelectorAll(".tab");
+      if (mode === "words") tabs[0].classList.add("active");
+      else tabs[1].classList.add("active");
+      render();
+    }
+
+    render();
+  </script>
+</body>
+</html>
