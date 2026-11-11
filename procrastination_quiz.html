@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Procrastination Quiz</title>
+<style>
+body{font-family:Arial,"Segoe UI",sans-serif;background:#f5f7fa;margin:0;color:#1f2937}
+.container{max-width:720px;margin:auto;padding:20px}
+h1{text-align:center;margin-bottom:6px}
+.subtitle{text-align:center;color:#6b7280;margin-bottom:20px}
+.badge{width:max-content;margin:0 auto 14px;background:#111827;color:white;padding:7px 14px;border-radius:999px;font-size:14px}
+.card{background:white;border-radius:18px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,.08);min-height:290px;display:flex;flex-direction:column;justify-content:center}
+.counter,.label{text-align:center;color:#6b7280;margin-bottom:14px}
+.question{text-align:center;font-size:24px;font-weight:700;line-height:1.5;margin-bottom:20px}
+.answer{display:none;text-align:center;font-size:22px;line-height:1.6;padding:16px;border-radius:12px;background:#f3f4f6;direction:ltr}
+.answer.show{display:block}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.controls button{flex:1;min-width:110px;border:0;border-radius:10px;padding:12px;font-size:16px;cursor:pointer}
+.prev{background:#d1d5db}.showbtn{background:#2563eb;color:white}.next{background:#16a34a;color:white}
+.review{background:white;margin-top:24px;border-radius:16px;padding:20px;box-shadow:0 5px 18px rgba(0,0,0,.05)}
+.review h2{margin-top:0;font-size:19px}.review h3{margin-top:20px;font-size:17px}
+.item{padding:10px 0;border-bottom:1px solid #ececec;line-height:1.7}.item:last-child{border-bottom:0}
+.eng{display:block;direction:ltr;font-weight:bold;margin-top:3px}
+@media(max-width:520px){h1{font-size:22px}.question{font-size:21px}.answer{font-size:19px}.card{padding:20px}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Procrastination</h1>
+<div class="subtitle">10 كلمات ثم 10 جمل — سؤال وجواب</div>
+<div class="badge" id="badge">الكلمات</div>
+
+<div class="card">
+<div class="counter" id="counter"></div>
+<div class="label" id="label"></div>
+<div class="question" id="question"></div>
+<div class="answer" id="answer"></div>
+<div class="controls">
+<button class="prev" onclick="prevCard()">السابق</button>
+<button class="showbtn" onclick="showAnswer()">إظهار الإجابة</button>
+<button class="next" onclick="nextCard()">التالي</button>
+</div>
+</div>
+
+<div class="review">
+<h2>المراجعة الكاملة</h2>
+<div id="fullList"></div>
+</div>
+</div>
+
+<script>
+const items = [
+{type:"word",q:"تأجيل المهام / المماطلة",a:"Procrastination"},
+{type:"word",q:"يؤجل",a:"Delay"},
+{type:"word",q:"يماطل / يؤجل باستمرار",a:"Procrastinate"},
+{type:"word",q:"مهمة",a:"Task"},
+{type:"word",q:"يضيع الوقت",a:"Waste time"},
+{type:"word",q:"متوتر",a:"Stressed"},
+{type:"word",q:"يركز",a:"Focus"},
+{type:"word",q:"ينظم",a:"Organize"},
+{type:"word",q:"خطوة",a:"Step"},
+{type:"word",q:"موعد نهائي",a:"Deadline"},
+{type:"sentence",q:"هل تؤجل مهامك أحيانًا؟",a:"Do you sometimes delay your tasks?"},
+{type:"sentence",q:"أنا أؤجل عملي عندما أشعر بالتعب.",a:"I delay my work when I feel tired."},
+{type:"sentence",q:"الهاتف ووسائل التواصل قد تضيع الكثير من الوقت.",a:"Phones and social media can waste a lot of time."},
+{type:"sentence",q:"تأجيل المهام يمكن أن يجعلنا نشعر بالتوتر.",a:"Procrastination can make us feel stressed."},
+{type:"sentence",q:"يجب أن نبدأ بدلًا من انتظار الوقت المثالي.",a:"We should start instead of waiting for the perfect time."},
+{type:"sentence",q:"يمكننا تقسيم المهام الكبيرة إلى خطوات أصغر.",a:"We can divide big tasks into smaller steps."},
+{type:"sentence",q:"فترات الراحة القصيرة تساعدنا على التركيز.",a:"Short breaks help us stay focused."},
+{type:"sentence",q:"أعتقد أن أهم شيء هو أن تبدأ.",a:"I think the most important thing is to start."},
+{type:"sentence",q:"سأحاول تنظيم وقتي بشكل أفضل.",a:"I will try to organize my time better."},
+{type:"sentence",q:"الخطوات الصغيرة يمكن أن تصنع فرقًا كبيرًا.",a:"Small steps can make a big difference."}
+];
+let index=0;
+
+function render(){
+ const item=items[index];
+ const isWord=item.type==="word";
+ document.getElementById("badge").textContent=isWord?"الكلمات":"الجمل";
+ document.getElementById("counter").textContent=(index+1)+" / "+items.length;
+ document.getElementById("label").textContent=isWord?"ما معنى هذه الكلمة بالإنجليزية؟":"كيف تقول هذه الجملة بالإنجليزية؟";
+ document.getElementById("question").textContent=item.q;
+ const ans=document.getElementById("answer");
+ ans.textContent=item.a;
+ ans.classList.remove("show");
+}
+function showAnswer(){document.getElementById("answer").classList.add("show")}
+function nextCard(){index=(index+1)%items.length;render()}
+function prevCard(){index=(index-1+items.length)%items.length;render()}
+
+function buildList(){
+ const words=items.filter(x=>x.type==="word");
+ const sentences=items.filter(x=>x.type==="sentence");
+ document.getElementById("fullList").innerHTML=
+ "<h3>أولًا: 10 كلمات</h3>"+
+ words.map((x,i)=>'<div class="item"><strong>'+(i+1)+'.</strong> '+x.q+'<span class="eng">'+x.a+'</span></div>').join("")+
+ "<h3>ثانيًا: 10 جمل</h3>"+
+ sentences.map((x,i)=>'<div class="item"><strong>'+(i+1)+'.</strong> '+x.q+'<span class="eng">'+x.a+'</span></div>').join("");
+}
+buildList();render();
+</script>
+</body>
+</html>
